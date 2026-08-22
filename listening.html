@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listening — Listening Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .listening-page{max-width:900px;margin:0 auto;padding:55px 0}
+    .back{color:#8e98a9;text-decoration:none;font-size:13px}.back:hover{color:#fff}
+    .test-head{margin:35px 0 25px}.test-head h1{font-family:"Space Grotesk";font-size:clamp(38px,7vw,68px);letter-spacing:-.05em;margin:0 0 10px}.test-head p{color:#8e98a9;margin:0}
+    .player{background:linear-gradient(145deg,#151d29,#0e141e);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:30px;box-shadow:0 25px 70px rgba(0,0,0,.3)}
+    .track{display:flex;align-items:center;gap:18px}.big-play{width:64px;height:64px;border:0;border-radius:50%;background:#8cf05a;color:#081008;font-size:22px;cursor:pointer}.track-title{font-weight:700}.track-meta{color:#8e98a9;font-size:12px;margin-top:5px}
+    audio{width:100%;margin-top:25px;filter:invert(.92) hue-rotate(70deg)}
+    .notice{margin-top:18px;color:#8e98a9;font-size:12px;line-height:1.6}
+  </style>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">L</span><span>LISTENING<span class="brand-dot">.</span>HUB</span></a>
+  <div class="status-pill"><span class="status-dot"></span> Listening</div>
+</header>
+
+<main class="listening-page">
+  <a class="back" href="index.html">← Ana səhifə</a>
+  <div class="test-head">
+    <div class="eyebrow">LISTENING SESSION</div>
+    <h1 id="title">Listening</h1>
+    <p id="subtitle">Audio yüklənir...</p>
+  </div>
+
+  <section class="player">
+    <div class="track">
+      <button class="big-play" id="play">▶</button>
+      <div><div class="track-title" id="trackTitle">Listening audio</div><div class="track-meta">Dinləməni diqqətlə dinlə</div></div>
+    </div>
+    <audio id="audio" controls preload="metadata"></audio>
+    <div class="notice">Audio faylını GitHub-da <b>audio</b> qovluğuna yerləşdirə bilərsən. Aşağıdakı JavaScript-də faylın adını dəyişmək kifayətdir.</div>
+  </section>
+</main>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const id = params.get("id") || "1";
+
+/*
+  BURADAN SONRA SƏNİN DİNLƏMƏLƏRİNİ ƏLAVƏ EDƏCƏYİK.
+  Məsələn:
+  1: { title:"A Day at School", file:"audio/listening-1.mp3" }
+  2: { title:"My Weekend", file:"audio/listening-2.mp3" }
+*/
+const listenings = {
+  1: { title: "Listening 01", subtitle: "A Day at School", file: "audio/listening-1.mp3" },
+  2: { title: "Listening 02", subtitle: "My Weekend", file: "audio/listening-2.mp3" },
+  3: { title: "Listening 03", subtitle: "A New Adventure", file: "audio/listening-3.mp3" }
+};
+
+const item = listenings[id] || listenings[1];
+document.title = item.title + " — Listening Hub";
+document.getElementById("title").textContent = item.title;
+document.getElementById("subtitle").textContent = item.subtitle;
+document.getElementById("trackTitle").textContent = item.subtitle;
+document.getElementById("audio").src = item.file;
+
+const audio = document.getElementById("audio");
+const play = document.getElementById("play");
+play.addEventListener("click", () => {
+  if (audio.paused) audio.play();
+  else audio.pause();
+});
+audio.addEventListener("play", () => play.textContent = "❚❚");
+audio.addEventListener("pause", () => play.textContent = "▶");
+</script>
+</body>
+</html>

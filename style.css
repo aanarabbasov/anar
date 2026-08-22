@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+  --bg:#080b12; --panel:#10151f; --panel2:#141b27; --text:#f5f7fb;
+  --muted:#8e98a9; --line:rgba(255,255,255,.09); --accent:#8cf05a;
+  --accent2:#b5ff91;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 10%,#172218 0,#080b12 35%),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+.app-shell{max-width:1180px;margin:auto;padding:24px 28px 36px}
+.topbar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:4px 0 22px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-family:"Space Grotesk";font-weight:700;letter-spacing:.06em;font-size:15px}
+.brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--accent);color:#081008;font-size:18px}
+.brand-dot{color:var(--accent)}
+.status-pill{font-size:12px;color:#b5becd;border:1px solid var(--line);background:rgba(255,255,255,.035);padding:8px 12px;border-radius:999px}
+.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:7px;box-shadow:0 0 12px var(--accent)}
+.hero{min-height:455px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:30px}
+.eyebrow,.section-label{font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--accent);margin-bottom:18px}
+.hero h1{font-family:"Space Grotesk";font-size:clamp(54px,8vw,92px);line-height:.9;letter-spacing:-.065em;margin:0 0 25px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{max-width:570px;color:var(--muted);font-size:17px;line-height:1.7;margin:0}
+.hero-orb{height:330px;position:relative;display:grid;place-items:center}
+.play-orb{width:145px;height:145px;border-radius:50%;display:grid;place-items:center;padding-left:7px;font-size:35px;color:#081008;background:var(--accent);box-shadow:0 0 0 16px rgba(140,240,90,.07),0 0 80px rgba(140,240,90,.22);animation:float 4s ease-in-out infinite}
+.orb-ring{position:absolute;border:1px solid rgba(140,240,90,.13);border-radius:50%;aspect-ratio:1}
+.ring-1{width:285px}.ring-2{width:220px}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.info-card,.manual-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border-radius:22px}
+.info-card{padding:23px;display:flex;gap:16px;min-height:150px}
+.card-number{font-family:"Space Grotesk";color:var(--accent);font-size:13px}
+.info-card strong{font-size:15px}.info-card p{color:var(--muted);font-size:13px;line-height:1.6;margin:9px 0 0}
+.manual-card{margin-top:14px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.manual-card h2{font-family:"Space Grotesk";font-size:25px;margin:0 0 8px}.manual-card p{margin:0;color:var(--muted);font-size:13px}
+.access-form{display:flex;gap:9px;min-width:330px}
+.access-form input{width:100%;background:#080b12;color:white;border:1px solid var(--line);border-radius:13px;padding:14px 15px;outline:none;font:inherit}
+.access-form input:focus{border-color:rgba(140,240,90,.6)}
+.access-form button{border:0;background:var(--accent);color:#081008;font-weight:700;border-radius:13px;padding:0 20px;cursor:pointer;font:inherit}
+.access-form button:hover{background:var(--accent2)}
+.footer-note{text-align:center;color:#566071;font-size:11px;letter-spacing:.05em;padding-top:35px}.footer-note span{margin:0 7px;color:#303847}
+@keyframes float{50%{transform:translateY(-10px)}}
+@media(max-width:760px){
+  .app-shell{padding:18px 16px 28px}.status-pill{display:none}
+  .hero{min-height:520px;grid-template-columns:1fr;text-align:left;padding:55px 0 20px}
+  .hero h1{font-size:60px}.hero-orb{position:absolute;right:4px;top:160px;opacity:.35;z-index:-1}.play-orb{width:125px;height:125px}
+  .ring-1{width:240px}.ring-2{width:185px}
+  .card-grid{grid-template-columns:1fr}.info-card{min-height:auto}
+  .manual-card{align-items:stretch;flex-direction:column}.access-form{min-width:0}
+}

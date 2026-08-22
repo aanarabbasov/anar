@@ -1,118 +1,62 @@
 <!DOCTYPE html>
 <html lang="az">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adəm Teacher Listening</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Reset və body */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      flex-direction: column;
-      padding: 20px;
-    }
-    
-    /* Container */
-    .container {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 500px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Header */
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #ffdd59;
-    }
-    
-    p {
-      margin-bottom: 30px;
-      font-size: 1rem;
-      color: #f1f1f1;
-    }
-    
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background: #ff6b6b;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 12px 25px;
-      margin: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .btn:hover {
-      transform: translateY(-3px);
-      background: #ff4757;
-    }
-    
-    /* Custom audio player */
-    audio {
-      width: 100%;
-      outline: none;
-      margin-top: 25px;
-      border-radius: 12px;
-      background: #1e272e;
-    }
-  </style>
+  <title>Listening Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  
-  <div class="container">
-    <h1>Adəm Teacher Listening</h1>
-    <p>Choose a unit and listen. Modern design + custom vibe!</p>
-    
-    <button class="btn" onclick="playAudio('unit1.mp3')">Unit 1</button>
-    <button class="btn" onclick="playAudio('unit2.mp3')">Unit 2</button>
-    <button class="btn" onclick="playAudio('unit3.mp3')">Unit 3</button>
-    
-    <audio id="player" controls autoplay></audio>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">L</span><span>LISTENING<span class="brand-dot">.</span>HUB</span></a>
+      <div class="status-pill"><span class="status-dot"></span> Listening practice</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">ENGLISH • LISTENING LAB</div>
+          <h1>Listen.<br><em>Think.</em> Answer.</h1>
+          <p>QR kodu skan et və sənə verilən dinləməni aç. Sakit, sürətli və mobil üçün hazırlanıb.</p>
+        </div>
+        <div class="hero-orb">
+          <div class="orb-ring ring-1"></div>
+          <div class="orb-ring ring-2"></div>
+          <div class="play-orb">▶</div>
+        </div>
+      </section>
+
+      <section class="card-grid">
+        <article class="info-card">
+          <span class="card-number">01</span>
+          <div><strong>QR kodu skan et</strong><p>Testdəki QR kod səni birbaşa uyğun dinləməyə aparır.</p></div>
+        </article>
+        <article class="info-card">
+          <span class="card-number">02</span>
+          <div><strong>Dinləməni aç</strong><p>Audio avtomatik olaraq həmin tapşırığın səhifəsində görünür.</p></div>
+        </article>
+        <article class="info-card">
+          <span class="card-number">03</span>
+          <div><strong>Cavablandır</strong><p>Dinlə və testdəki sualları cavablandır.</p></div>
+        </article>
+      </section>
+
+      <section class="manual-card">
+        <div>
+          <div class="section-label">QUICK ACCESS</div>
+          <h2>Dinləmə kodunu daxil et</h2>
+          <p>QR işlətmədən də məsələn <b>1</b>, <b>2</b> və ya <b>12</b> yaza bilərsən.</p>
+        </div>
+        <div class="access-form">
+          <input id="listeningInput" type="number" min="1" placeholder="Məs: 1">
+          <button id="openListening">Aç <span>→</span></button>
+        </div>
+      </section>
+
+      <section class="footer-note">© 2026 Listening Hub <span>•</span> Teacher Edition</section>
+    </main>
   </div>
-  
-  <script>
-    const player = document.getElementById('player');
-
-// Default audio
-player.src = 'unit1.mp3';
-player.autoplay = true;
-
-// Function to change audio
-function playAudio(file){
-  player.src = file;
-  player.play();
-}
-  </script>
-  
+  <script src="script.js"></script>
 </body>
-
 </html>
